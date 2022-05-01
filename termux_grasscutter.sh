@@ -19,18 +19,9 @@ install_openjdk17(){
 }
 
 install_mitmproxy(){
-    # Install mitmproxy
     pkg install -y python
     export CARGO_BUILD_TARGET=aarch64-linux-android
     pip install mitmproxy
-}
-
-install_status(){
-    if [ $? -ne 0 ]; then
-        echo "\033[31m 安装出错了！ \033[0m";
-    else
-        echo "\033[32m 安装完成！ \033[0m";
-    fi
 }
 
 # Initialization
@@ -42,20 +33,20 @@ fi
 pkg upgrade -y && clear
 case $1 in
     "mongodb")
-    install_mongodb&&install_status;;
+    install_mongodb;;
 
     "jdk")
-    install_openjdk17&&install_status;;
+    install_openjdk17;;
 
     "mitmproxy")
-    install_mitmproxy&&install_status;;
+    install_mitmproxy;;
 
     "all")
-    install_mongodb&&install_openjdk17&&install_mitmproxy&&install_status;;
+    install_mongodb&&install_openjdk17&&install_mitmproxy;;
 
     "nomongodb")
-    install_openjdk17&&install_mitmproxy&&install_status;;
+    install_openjdk17&&install_mitmproxy;;
 
     *)
-    install_mongodb&&install_openjdk17&&install_mitmproxy&&install_status;;
+    install_mongodb&&install_openjdk17&&install_mitmproxy;;
 esac
