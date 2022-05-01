@@ -19,7 +19,7 @@ install_openjdk17(){
 }
 
 install_mitmproxy(){
-    pkg install -y python
+    pkg install -y python rust
     export CARGO_BUILD_TARGET=aarch64-linux-android
     pip install mitmproxy
 }
