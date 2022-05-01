@@ -33,7 +33,7 @@ install_status(){
     fi
 }
 
-# Initial
+# Initialization
 if [ `uname -m` != aarch64 ]; then
     echo "本脚本仅支持arm64(aarch64)架构！"; exit
         elif [ "$TERMUX_VERSION" = "" ]; then
