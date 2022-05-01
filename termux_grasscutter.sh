@@ -3,13 +3,13 @@
 
 
 install_mongodb(){
-    pkg install -y wget openssl-1.1 && apt-mark unhold libicu && pkg remove -y libicu mongodb
+    pkg install -y wget openssl-1.1 && apt-mark unhold libicu && pkg remove -y libicu
     ln -sf /data/data/com.termux/files/usr/lib/openssl-1.1/libcrypto.so.1.1 /data/data/com.termux/files/usr/lib/libcrypto.so.1.1
     ln -sf /data/data/com.termux/files/usr/lib/openssl-1.1/libssl.so.1.1 /data/data/com.termux/files/usr/lib/libssl.so.1.1
     wget https://raw.fastgit.org/Slowhy/scripts/main/libicu_69.1-2_aarch64.deb
     dpkg -i libicu_69.1-2_aarch64.deb
     apt-mark hold libicu && rm -rf libicu_69.1-2_aarch64.deb
-    wget -qO- https://its-pointless.github.io/setup-pointless-repo.sh | bash
+    bash -c "$(wget -qO- https://its-pointless.github.io/setup-pointless-repo.sh)"
     echo "deb https://mirrors.ustc.edu.cn/termux-its-pointless/24 termux extras" > $PREFIX/etc/apt/sources.list.d/pointless.list
     pkg update -y && pkg install -y mongodb
 }
